@@ -10,7 +10,7 @@ namespace UnityStandardAssets.CrossPlatformInput
     [ExecuteInEditMode]
     public class MobileControlRig : MonoBehaviour
 #if UNITY_EDITOR
-        , UnityEditor.Build.IActiveBuildTargetChanged
+        , UnityEditor.Build
 #endif
     {
         // this script enables or disables the child objects of a control rig
