@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class GameOverMenu : MonoBehaviour {
 
+    Animator animatorController;
+
+
     public void triggerGameOverMenu()
     {
-        GetComponent<Transform>().localPosition = new Vector3(0, 0, 0);
+        animatorController = gameObject.GetComponent<Animator>();
+        animatorController.SetTrigger("trigger-activation");
+      
     }
 
     public void hideGameOverMenu()

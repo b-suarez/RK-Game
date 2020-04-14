@@ -7,21 +7,23 @@ public class CountDownTimer : MonoBehaviour {
 
     public bool countdownIsShown;
     TimerController timerController;
+    Animator animator;
 
 	// Use this for initialization
 	void Start () {
         timerController = GetComponentInParent<TimerController>();
+      
 	}
 	
 	// Update is called once per frame
 	void Update () {
         if (countdownIsShown)
         {
-            GetComponent<Text>().text = timerController.getCountdownTimerLeft().ToString();
+            GetComponentInChildren<Text>().text =Mathf.Ceil(timerController.getCountdownTimerLeft()).ToString(); 
         }
         else
         {
-            GetComponent<Text>().text = "";
+            GetComponentInChildren<Text>().text = "";
         }
         
     }
@@ -29,6 +31,7 @@ public class CountDownTimer : MonoBehaviour {
     public void activate()
     {
         countdownIsShown = true;
+        gameObject.GetComponent<Animator>().SetTrigger("countdown-starts");
         Debug.Log("TEST");
     }
 

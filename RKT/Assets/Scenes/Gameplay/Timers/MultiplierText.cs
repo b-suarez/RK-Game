@@ -7,6 +7,6 @@ public class MultiplierText : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        GetComponent<Text>().text = "+" +  GetComponentInParent<GameController>().getMultiplier().ToString();
+        GetComponent<Text>().text = "x" +  GetComponentInParent<GameController>().getMultiplier().ToString();
     }
 }

@@ -5,25 +5,35 @@ using UnityEngine.UI;
 
 public class ClickableItem : MonoBehaviour {
 
-    bool canBeClicked = false;
+    bool active = false;
     int position;
+    Animator animator;
+
+    void Start()
+    {
+        animator = gameObject.GetComponent<Animator>();
+        
+    }
 
     public void Clicked()
     {
-        if (canBeClicked)
+        if (active)
         {
             this.GetComponentInParent<GameController>().clickedPosition(position);
+            
         }
     }
 
     public void Activate()
     {
-        canBeClicked = true;
+        animator.SetTrigger("activate-item");
+        active = true;
     }
 
     public void Deactivate()
     {
-        canBeClicked = false;
+        animator.SetTrigger("deactivate-item");
+        active = false;
     }
 
     public void SetPositionText(int receivedPosition)

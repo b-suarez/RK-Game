@@ -78,8 +78,10 @@ public class TimerController : MonoBehaviour {
 
     public void countDownTimer()
     {
-        if (countDownTimerLeft <= 0)
+        if (countDownTimerLeft <= 0 && !controller.gameplayHasStarted)
         {
+
+            controller.startGameplay();
             startRoundTimer();
             GetComponentInChildren<CountDownTimer>().deactivate();
         }

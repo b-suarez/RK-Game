@@ -1,0 +1,74 @@
+Initialize engine version: 5.6.2f1 (a2913c821e27)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce GTX 1070 (ID=0x1b81)
+    Vendor:   NVIDIA
+    VRAM:     3072 MB
+    Driver:   26.21.14.4575
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\Brais\Documents\repos\unity\RK-Game\RKT\test_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Brais\Documents\repos\unity\RK-Game\RKT\test_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Brais\Documents\repos\unity\RK-Game\RKT\test_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Brais\Documents\repos\unity\RK-Game\RKT\test_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Brais\Documents\repos\unity\RK-Game\RKT\test_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Brais\Documents\repos\unity\RK-Game\RKT\test_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\Brais\Documents\repos\unity\RK-Game\RKT\test_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\Brais\Documents\repos\unity\RK-Game\RKT\test_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+- Completed reload, in  0.113 seconds
+Platform assembly: C:\Users\Brais\Documents\repos\unity\RK-Game\RKT\test_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\Brais\Documents\repos\unity\RK-Game\RKT\test_Data\Managed\System.dll (this message is harmless)
+desktop: 2560x1440 144Hz; virtual: 2560x1440 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 0.826025 ms
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 412.468964 ms
+
+Unloading 9 unused Assets to reduce memory usage. Loaded Objects now: 314.
+Total: 0.205531 ms (FindLiveObjects: 0.016335 ms CreateObjectMapping: 0.009508 ms MarkObjects: 0.145066 ms  DeleteObjects: 0.034133 ms)
+
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 1.507471 ms
+
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 607.
+Total: 0.283793 ms (FindLiveObjects: 0.023405 ms CreateObjectMapping: 0.014140 ms MarkObjects: 0.213576 ms  DeleteObjects: 0.032182 ms)
+
+TEST
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+test
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.762147 ms
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 607.
+Total: 0.295740 ms (FindLiveObjects: 0.034864 ms CreateObjectMapping: 0.015603 ms MarkObjects: 0.241127 ms  DeleteObjects: 0.003657 ms)
+
+TEST
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+test
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.670475 ms
+
+Unloading 1 unused Assets to reduce memory usage. Loaded Objects now: 607.
+Total: 0.284281 ms (FindLiveObjects: 0.026331 ms CreateObjectMapping: 0.014628 ms MarkObjects: 0.239420 ms  DeleteObjects: 0.003413 ms)
+
+TEST
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Setting up 4 worker threads for Enlighten.
+  Thread -> id: 517c -> priority: 1 
+  Thread -> id: 53bc -> priority: 1 
+  Thread -> id: 5a64 -> priority: 1 
+  Thread -> id: 2320 -> priority: 1 

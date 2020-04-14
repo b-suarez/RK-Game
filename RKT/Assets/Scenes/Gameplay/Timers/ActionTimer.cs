@@ -7,6 +7,6 @@ public class ActionTimer : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        GetComponent<Text>().text = GetComponentInParent<TimerController>().getActionTimeLeft().ToString();
+        GetComponent<Text>().text = GetComponentInParent<TimerController>().getActionTimeLeft().ToString("F1");
 	}
 }

@@ -1,15 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
 
     int currentAvailableNumber;
     ClickableItem[] clickableObjects;
+    CenterItem centerItem;
     TimerController timerController;
     GameOverMenu gameOverMenu;
 
+    public bool gameplayHasStarted = false;
     int pointsPerCorrect = 100;
+    int pointsPerCenter = 500;
 
 
     int score;
@@ -17,12 +21,11 @@ public class GameController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        centerItem = this.GetComponentInChildren<CenterItem>();
         clickableObjects = this.GetComponentsInChildren<ClickableItem>();
         timerController = GetComponent<TimerController>();
         gameOverMenu = GetComponentInChildren<GameOverMenu>();
-        setInitialPositions(getNewPositions());
-        resetScoreAndMultiplier();
-	}
+    }
 
     void setInitialPositions(List<int> positions)
     {
@@ -86,11 +89,11 @@ public class GameController : MonoBehaviour {
     {
         deactivateItem(position);
 
-        addScore();
+        addScore(pointsPerCorrect);
 
         if(position+1 >= clickableObjects.Length)
         {
-            roundCompleted();
+            centerItem.activate();
         }
         else
         {
@@ -130,6 +133,7 @@ public class GameController : MonoBehaviour {
 
     void roundCompleted()
     {
+        addScore(pointsPerCenter);
         multiplier++;
         setInitialPositions(getNewPositions());
 
@@ -143,10 +147,10 @@ public class GameController : MonoBehaviour {
         multiplier = 1;
     }
 
-    void addScore()
+    void addScore(int pointsToAdd)
     {
-        score = score + pointsPerCorrect * multiplier;
-        Debug.Log(score);
+        score = score + pointsToAdd * multiplier;
+      
     }
 
     public int getMultiplier()
@@ -154,11 +158,31 @@ public class GameController : MonoBehaviour {
         return multiplier;
     }
 
-    public void restartGame()
+    public void startGameplay()
     {
+        Debug.Log("test");
+        gameplayHasStarted = true;
         setInitialPositions(getNewPositions());
         resetScoreAndMultiplier();
+    }
+
+    public void restartGame()
+    {
+        /*gameplayHasStarted = false;
         timerController.restartTimers();
-        gameOverMenu.hideGameOverMenu();
+        gameOverMenu.hideGameOverMenu();*/
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+    }
+
+    public void centerItemClicked()
+    {
+        centerItem.deactivate();
+        roundCompleted();
+    }
+
+    public int getScore()
+    {
+        return score;
     }
 }

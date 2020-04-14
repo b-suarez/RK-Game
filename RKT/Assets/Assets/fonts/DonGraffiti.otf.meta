@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 14cd2fe66d5805e40abbb6d20211a4a7
+timeCreated: 1586049049
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Don Graffiti
+  fontNames:
+  - Don Graffiti
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

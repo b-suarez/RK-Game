@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 907a411c6b059394cbeb1a706c3d7eb8
+timeCreated: 1586049286
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Voyager Grotesque Light
+  fontNames:
+  - Voyager Grotesque Light
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
