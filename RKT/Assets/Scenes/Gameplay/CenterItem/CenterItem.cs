@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CenterItem : MonoBehaviour {
 
-    public bool active;
+    bool active;
     Animator animator;
 
 	// Use this for initialization
@@ -15,15 +15,20 @@ public class CenterItem : MonoBehaviour {
 
     public void activate()
     {
-        animator.SetTrigger("activate");
+        animator.SetBool("active", true);
         active = true;
 
     }
 
     public void deactivate()
     {
-        animator.SetTrigger("deactivate");
+        animator.SetBool("active", false);
         active = false;
+    }
+
+    public bool isActive()
+    {
+        return active;
     }
 
     public void clicked()

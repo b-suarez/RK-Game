@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ClickableItem : MonoBehaviour {
 
-    bool active = false;
+    public bool active = false;
     int position;
     Animator animator;
 
@@ -20,19 +20,19 @@ public class ClickableItem : MonoBehaviour {
         if (active)
         {
             this.GetComponentInParent<GameController>().clickedPosition(position);
-            
         }
     }
 
     public void Activate()
     {
-        animator.SetTrigger("activate-item");
+ 
+        animator.SetBool("active", true);
         active = true;
     }
 
     public void Deactivate()
     {
-        animator.SetTrigger("deactivate-item");
+        animator.SetBool("active", false);
         active = false;
     }
 

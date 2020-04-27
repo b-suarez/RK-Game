@@ -10,6 +10,7 @@ public class GameController : MonoBehaviour {
     CenterItem centerItem;
     TimerController timerController;
     GameOverMenu gameOverMenu;
+    int highscore;
 
     public bool gameplayHasStarted = false;
     int pointsPerCorrect = 100;
@@ -25,6 +26,8 @@ public class GameController : MonoBehaviour {
         clickableObjects = this.GetComponentsInChildren<ClickableItem>();
         timerController = GetComponent<TimerController>();
         gameOverMenu = GetComponentInChildren<GameOverMenu>();
+
+        highscore = PlayerPrefs.GetInt("HighScore");
     }
 
     void setInitialPositions(List<int> positions)
@@ -39,11 +42,14 @@ public class GameController : MonoBehaviour {
         }
     }
 
-    void disableAllItems()
+    void deactivateAllItems()
     {
         for (int i = 0; i < clickableObjects.Length; i++)
         {
-            clickableObjects[i].Deactivate();
+            if (clickableObjects[i].isActiveAndEnabled)
+            {
+                clickableObjects[i].Deactivate();
+            } 
         }
     }
 
@@ -87,6 +93,8 @@ public class GameController : MonoBehaviour {
 
     public void clickedPosition(int position)
     {
+    
+
         deactivateItem(position);
 
         addScore(pointsPerCorrect);
@@ -94,11 +102,29 @@ public class GameController : MonoBehaviour {
         if(position+1 >= clickableObjects.Length)
         {
             centerItem.activate();
+
+            //CODE PORTION TO SEND INFO TO THE TUTORIAL
+
+            if (isFirstTimeNormalGame())
+            {
+                GetComponentInChildren<TutorialScript>().centerItemActivated();
+            }  
+
+            ///////////////////////////////////////////
         }
         else
         {
             activateNextItem(position);
         }
+
+        //CODE PORTION TO SEND INFO TO THE TUTORIAL
+
+        if (isFirstTimeNormalGame())
+        {
+            GetComponentInChildren<TutorialScript>().actionItemClicked();
+        }
+
+        ///////////////////////////////////////////
     }
 
     void activateNextItem(int currentItem)
@@ -127,18 +153,41 @@ public class GameController : MonoBehaviour {
 
     public void GameOver()
     {
-        disableAllItems();
-        gameOverMenu.triggerGameOverMenu();
+        deactivateAllItems();
+        gameOverMenu.triggerGameOverMenu(score, highscore);
+
+        if (score > getHighScore())
+        {
+            setHighScore(score);
+        }
     }
 
     void roundCompleted()
     {
+        GetComponentInChildren<MenuAnimations>().playRoundCompletedAnim();
         addScore(pointsPerCenter);
         multiplier++;
         setInitialPositions(getNewPositions());
 
         //Restart the action timer each time a round has been completed
         timerController.restartActionTimer();
+
+        
+    }
+
+    public void roundOver()
+    {
+        GetComponentInChildren<MenuAnimations>().playErrorAnim();
+        
+        multiplier = 1;
+        resetGameplay();
+        timerController.restartActionTimer();
+
+        if (centerItem.isActive())
+        {
+            centerItem.deactivate();
+        }
+
     }
 
     void resetScoreAndMultiplier()
@@ -160,29 +209,87 @@ public class GameController : MonoBehaviour {
 
     public void startGameplay()
     {
-        Debug.Log("test");
         gameplayHasStarted = true;
         setInitialPositions(getNewPositions());
         resetScoreAndMultiplier();
+
+        ///////////////////////////////////////////
+        //CODE PORTION TO SEND INFO TO THE TUTORIAL
+
+        if (isFirstTimeNormalGame())
+        {
+            timerController.pauseTimer();
+            GetComponentInChildren<TutorialScript>().startTutorial();
+        }
+
+        ///////////////////////////////////////////
+
     }
 
     public void restartGame()
-    {
-        /*gameplayHasStarted = false;
-        timerController.restartTimers();
-        gameOverMenu.hideGameOverMenu();*/
+    {   
+        ///////////////////////////////////////////
+        // RESTARTING THE CURRENT SCENE
+        //////////////////////////////////////////
+        
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-
     }
 
     public void centerItemClicked()
     {
         centerItem.deactivate();
         roundCompleted();
+
+        ///////////////////////////////////////////
+        //CODE PORTION TO SEND INFO TO THE TUTORIAL
+
+        if (isFirstTimeNormalGame())
+        {
+            GetComponentInChildren<TutorialScript>().centerItemClicked();
+        }
+
+        ///////////////////////////////////////////
     }
 
     public int getScore()
     {
         return score;
     }
+
+    public void setHighScore(int score)
+    {
+        PlayerPrefs.SetInt("HighScore", score);
+    }
+
+    public int getHighScore()
+    {
+        return highscore;
+    }
+
+    void resetGameplay()
+    {
+        bool allItemsDisabled = false;
+        do
+        {
+            deactivateAllItems();
+            allItemsDisabled = true;
+
+        } while (allItemsDisabled == false);
+        
+        setInitialPositions(getNewPositions());
+    }
+
+    bool isFirstTimeNormalGame()
+    {
+        int isFirstTime = PlayerPrefs.GetInt("isFirstTime");
+        if (isFirstTime !=1 )
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
 }

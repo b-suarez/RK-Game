@@ -25,14 +25,12 @@ public class CountDownTimer : MonoBehaviour {
         {
             GetComponentInChildren<Text>().text = "";
         }
-        
     }
 
     public void activate()
     {
         countdownIsShown = true;
         gameObject.GetComponent<Animator>().SetTrigger("countdown-starts");
-        Debug.Log("TEST");
     }
 
     public void deactivate()
