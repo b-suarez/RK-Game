@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class HighScoreText : MonoBehaviour {
 	
-	// Update is called once per frame
-	void Update () {
-        GetComponent<Text>().text = GetComponentInParent<GameOverMenu>().highScoreToDisplay.ToString() ;
+	public void setHighScore(int highScore)
+	{
+		GetComponent<Text>().text = highScore.ToString();
 	}
 }

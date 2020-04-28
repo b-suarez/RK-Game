@@ -14,6 +14,11 @@ public class SoundController : MonoBehaviour
 
     public void playAudio(int position)
     {
+        /////////////////////////////
+        ///GIVEN AN ARRAY POSITION IT PLAYS THE SOUND ASSIGNED
+        ///TO THAT POSITION X
+        //////////////////////////////
+        
         switch (position)
         {
             case 0:
@@ -24,17 +29,6 @@ public class SoundController : MonoBehaviour
                 audioSource.clip = audio1;
                 audioSource.Play();
                 break;
-
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown("q"))
-        {
-            playAudio(0);
-        }
-
     }
 }

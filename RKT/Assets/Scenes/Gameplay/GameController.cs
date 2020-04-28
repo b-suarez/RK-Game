@@ -10,6 +10,11 @@ public class GameController : MonoBehaviour {
     CenterItem centerItem;
     TimerController timerController;
     GameOverMenu gameOverMenu;
+    SoundController soundController;
+    SoundTrackController soundTrackController;
+
+    ScoreText scoreText;
+
     int highscore;
 
     public bool gameplayHasStarted = false;
@@ -22,12 +27,21 @@ public class GameController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        centerItem = this.GetComponentInChildren<CenterItem>();
-        clickableObjects = this.GetComponentsInChildren<ClickableItem>();
+
         timerController = GetComponent<TimerController>();
+        soundController = GetComponent<SoundController>();
+
+        centerItem = GetComponentInChildren<CenterItem>();
+        clickableObjects = GetComponentsInChildren<ClickableItem>();
         gameOverMenu = GetComponentInChildren<GameOverMenu>();
 
+        scoreText = GetComponentInChildren<ScoreText>();
+
+        soundTrackController = GetComponentInChildren<SoundTrackController>();
+
         highscore = PlayerPrefs.GetInt("HighScore");
+
+        soundTrackController.startSoundtrack();
     }
 
     void setInitialPositions(List<int> positions)
@@ -93,13 +107,15 @@ public class GameController : MonoBehaviour {
 
     public void clickedPosition(int position)
     {
-    
 
+        
         deactivateItem(position);
-
+        
         addScore(pointsPerCorrect);
 
-        if(position+1 >= clickableObjects.Length)
+        soundController.playAudio(position);
+
+        if (position+1 >= clickableObjects.Length)
         {
             centerItem.activate();
 
@@ -130,8 +146,9 @@ public class GameController : MonoBehaviour {
     void activateNextItem(int currentItem)
     {
         int activateNextItem = currentItem + 1;
+        
 
-        for (int i = 0; i < clickableObjects.Length; i++)
+       for (int i = 0; i < clickableObjects.Length; i++)
         {
             if (clickableObjects[i].GetPosition() == activateNextItem)
             {
@@ -171,8 +188,6 @@ public class GameController : MonoBehaviour {
 
         //Restart the action timer each time a round has been completed
         timerController.restartActionTimer();
-
-        
     }
 
     public void roundOver()
@@ -199,7 +214,7 @@ public class GameController : MonoBehaviour {
     void addScore(int pointsToAdd)
     {
         score = score + pointsToAdd * multiplier;
-      
+        scoreText.setScoreText(score);
     }
 
     public int getMultiplier()
@@ -212,6 +227,8 @@ public class GameController : MonoBehaviour {
         gameplayHasStarted = true;
         setInitialPositions(getNewPositions());
         resetScoreAndMultiplier();
+
+        
 
         ///////////////////////////////////////////
         //CODE PORTION TO SEND INFO TO THE TUTORIAL
@@ -268,14 +285,7 @@ public class GameController : MonoBehaviour {
 
     void resetGameplay()
     {
-        bool allItemsDisabled = false;
-        do
-        {
-            deactivateAllItems();
-            allItemsDisabled = true;
-
-        } while (allItemsDisabled == false);
-        
+        deactivateAllItems();
         setInitialPositions(getNewPositions());
     }
 

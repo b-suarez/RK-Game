@@ -4,9 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class ActionTimer : MonoBehaviour {
-	
+
+	Text text;
+	private void Start()
+	{
+		text = GetComponent<Text>();
+	}
+
 	// Update is called once per frame
-	void Update () {
-        GetComponent<Text>().text = GetComponentInParent<TimerController>().getActionTimeLeft().ToString("F1");
+	void FixedUpdate () {
+       text.text = GetComponentInParent<TimerController>().getActionTimeLeft().ToString("F1");
 	}
 }

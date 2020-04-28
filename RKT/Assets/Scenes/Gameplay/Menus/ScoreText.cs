@@ -12,9 +12,8 @@ public class ScoreText : MonoBehaviour {
         textField = GetComponent<Text>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void setScoreText(int score)
     {
-        textField.text = GetComponentInParent<GameController>().getScore().ToString(); ;
+        textField.text = score.ToString();
     }
 }

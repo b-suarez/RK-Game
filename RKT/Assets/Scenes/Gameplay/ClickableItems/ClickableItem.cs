@@ -12,7 +12,6 @@ public class ClickableItem : MonoBehaviour {
     void Start()
     {
         animator = gameObject.GetComponent<Animator>();
-        
     }
 
     public void Clicked()
@@ -39,7 +38,7 @@ public class ClickableItem : MonoBehaviour {
     public void SetPositionText(int receivedPosition)
     {
         position = receivedPosition;
-        this.GetComponentInChildren<Text>().text = (position+1).ToString();
+        //this.GetComponentInChildren<Text>().text = (position+1).ToString();
     }
 
     public int GetPosition()

@@ -5,9 +5,10 @@ using UnityEngine;
 public class TimerController : MonoBehaviour {
 
     GameController controller;
-    public float roundTime = 30.0f;
-    public float actionTime = 10.0f;
-    public float countDownTime = 3.0f;
+    CountDownTimer countDownTimerItem;
+    float roundTime = 30.0f;
+    float actionTime = 10.0f;
+    float countDownTime = 3.0f;
     TimerText mainTimer;    public float roundTimeLeft; float actionTimeLeft;
     float countDownTimerLeft;
     bool roundTimeHasStarted, timerIsOver;
@@ -18,6 +19,7 @@ public class TimerController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         controller = GetComponent<GameController>();
+        countDownTimerItem = GetComponentInChildren<CountDownTimer>();
 
         isPaused = false;
 
@@ -31,17 +33,11 @@ public class TimerController : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-
-        if (Input.GetKeyDown("space"))
-        {
-            pauseTimer();
-        }
+	void FixedUpdate () {
 
         if (isPaused== false)
         {
             countDownTimer();
-
             if (roundTimeHasStarted && !timerIsOver)
             {
                 roundTimeLeft -= Time.deltaTime;
@@ -59,10 +55,7 @@ public class TimerController : MonoBehaviour {
                     timerIsOver = true;
                 }
             }
-
         }
-
-        
     }
 
     void startRoundTimer()
@@ -91,19 +84,18 @@ public class TimerController : MonoBehaviour {
     {
         countDownTimerIsOver = false;
         countDownTimerLeft = countDownTime;
-        GetComponentInChildren<CountDownTimer>().activate();
+        countDownTimerItem.activate();
     }
 
     public void countDownTimer()
     {
         if (countDownTimerLeft <= 0 && !controller.gameplayHasStarted)
         {
-
             controller.startGameplay();
             startRoundTimer();
-            GetComponentInChildren<CountDownTimer>().deactivate();
+            countDownTimerItem.deactivate();
         }
-        else
+        else if(!controller.gameplayHasStarted)
         {
             countDownTimerLeft -= Time.deltaTime;
         }
@@ -117,6 +109,5 @@ public class TimerController : MonoBehaviour {
     public void pauseTimer()
     {
         isPaused = !isPaused;
-
     }
 }
