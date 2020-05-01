@@ -4,9 +4,16 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class MultiplierText : MonoBehaviour {
-	
-	// Update is called once per frame
-	void Update () {
-        GetComponent<Text>().text = "x" +  GetComponentInParent<GameController>().getMultiplier().ToString();
-    }
+
+	Text multiplierText;
+
+	private void Start()
+	{
+		multiplierText = GetComponent<Text>();
+	}
+
+	public void updateMultiplier(int multiplier)
+	{
+		multiplierText.text = "x" + multiplier.ToString();
+	}
 }

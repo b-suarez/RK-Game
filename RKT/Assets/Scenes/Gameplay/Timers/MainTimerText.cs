@@ -9,9 +9,9 @@ public class MainTimerText : MonoBehaviour {
 	void Start () {
         textField = GetComponent<Text>();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-        textField.text = GetComponentInParent<TimerController>().roundTimeLeft.ToString("F0"); ;
-    }
+
+	public void updateMainTimerText(float timeLeft)
+	{
+		textField.text = timeLeft.ToString("F1"); ;
+	}
 }

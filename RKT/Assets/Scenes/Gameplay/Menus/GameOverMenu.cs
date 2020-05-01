@@ -23,4 +23,15 @@ public class GameOverMenu : MonoBehaviour {
         animatorController = gameObject.GetComponent<Animator>();
         animatorController.SetTrigger("trigger-activation");
     }
+
+    public void triggerGameOverMenuSurvival(float time, float bestTime)
+    {
+        GetComponentInChildren<SurvivalModeFinalScore>().setTotalTimeText(time);
+       
+        GetComponentInChildren<SurvivalModeBestTimeText>().setBestTimeText(bestTime);
+       
+
+        animatorController = gameObject.GetComponent<Animator>();
+        animatorController.SetTrigger("trigger-activation");
+    }
 }

@@ -35,7 +35,15 @@ public class CenterItem : MonoBehaviour {
     {
         if (active)
         {
-            GetComponentInParent<GameController>().centerItemClicked();
+            if (GetComponentInParent<GameController>())
+            {
+                GetComponentInParent<GameController>().centerItemClicked();
+            }
+            else if (GetComponentInParent<SurvivalModeController>())
+            {
+                GetComponentInParent<SurvivalModeController>().centerItemClicked();
+            }
+            
         }
     }
 	
