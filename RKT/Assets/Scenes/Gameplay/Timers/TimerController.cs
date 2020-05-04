@@ -9,7 +9,7 @@ public class TimerController : MonoBehaviour {
     float roundTime = 30.0f;
     float actionTime = 10.0f;
     float countDownTime = 3.0f;
-    TimerText mainTimer;    public float roundTimeLeft; float actionTimeLeft;
+    MainTimerText mainTimer;    public float roundTimeLeft; float actionTimeLeft;
     float countDownTimerLeft;
     bool roundTimeHasStarted, timerIsOver;
     bool countDownTimerIsOver;
@@ -20,6 +20,7 @@ public class TimerController : MonoBehaviour {
 	void Start () {
         controller = GetComponent<GameController>();
         countDownTimerItem = GetComponentInChildren<CountDownTimer>();
+        mainTimer = GetComponentInChildren<MainTimerText>();
 
         isPaused = false;
 
@@ -41,6 +42,7 @@ public class TimerController : MonoBehaviour {
             if (roundTimeHasStarted && !timerIsOver)
             {
                 roundTimeLeft -= Time.deltaTime;
+                mainTimer.updateMainTimerText(roundTimeLeft);
 
                 actionTimeLeft -= Time.deltaTime;
 
@@ -98,6 +100,7 @@ public class TimerController : MonoBehaviour {
         else if(!controller.gameplayHasStarted)
         {
             countDownTimerLeft -= Time.deltaTime;
+            countDownTimerItem.updateCountdownTimer(countDownTimerLeft);
         }
     }
 

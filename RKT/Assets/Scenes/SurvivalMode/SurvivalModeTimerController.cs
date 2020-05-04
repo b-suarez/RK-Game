@@ -116,6 +116,7 @@ public class SurvivalModeTimerController : MonoBehaviour
     public void addTimeToMainTimer(int secondsToAdd)
     {
         roundTimeLeft = roundTimeLeft + secondsToAdd;
+        mainTimerText.updateMainTimerText(roundTimeLeft);
     }
 
     public void pauseTimer()

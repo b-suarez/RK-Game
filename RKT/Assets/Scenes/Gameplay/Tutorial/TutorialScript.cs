@@ -15,6 +15,7 @@ public class TutorialScript : MonoBehaviour {
         if (Input.GetKeyDown("p"))
         {
             PlayerPrefs.SetInt("isFirstTime", 0);
+            PlayerPrefs.SetInt("isFirstTimeSurvival", 0);
         }
     }
 
@@ -72,5 +73,10 @@ public class TutorialScript : MonoBehaviour {
     public void tutorialFinished()
     {
         PlayerPrefs.SetInt("isFirstTime",1);
+    }
+
+    public void tutorialSurvivalFinished()
+    {
+        PlayerPrefs.SetInt("isFirstTimeSurvival", 1);
     }
 }

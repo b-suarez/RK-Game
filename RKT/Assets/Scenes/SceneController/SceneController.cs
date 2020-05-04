@@ -12,7 +12,7 @@ public class SceneController : MonoBehaviour {
     {
         if (isIntro)
         {
-            loadSceneWithDelayFunc("MainMenu", 2);
+            loadSceneWithDelayFunc("MainMenu", 4);
         }
         if (fadeIn)
         {

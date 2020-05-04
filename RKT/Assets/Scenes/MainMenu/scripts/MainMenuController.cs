@@ -14,4 +14,9 @@ public class MainMenuController : MonoBehaviour {
     {
         menuAnimator.SetTrigger("normal-game-trigger");
     }
+
+    public void triggerSurvivalGameAnimation()
+    {
+        menuAnimator.SetTrigger("survival-game-trigger");
+    }
 }

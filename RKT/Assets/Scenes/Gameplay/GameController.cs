@@ -183,7 +183,7 @@ public class GameController : MonoBehaviour {
     {
         GetComponentInChildren<MenuAnimations>().playRoundCompletedAnim();
         addScore(pointsPerCenter);
-        multiplier++;
+        addMultiplier();
         setInitialPositions(getNewPositions());
 
         //Restart the action timer each time a round has been completed
@@ -193,8 +193,8 @@ public class GameController : MonoBehaviour {
     public void roundOver()
     {
         GetComponentInChildren<MenuAnimations>().playErrorAnim();
-        
-        multiplier = 1;
+
+        resetMultiplier();
         resetGameplay();
         timerController.restartActionTimer();
 
@@ -208,7 +208,7 @@ public class GameController : MonoBehaviour {
     void resetScoreAndMultiplier()
     {
         score = 0;
-        multiplier = 1;
+        resetMultiplier();
     }
 
     void addScore(int pointsToAdd)
@@ -302,4 +302,14 @@ public class GameController : MonoBehaviour {
         }
     }
 
+    void addMultiplier()
+    {
+        multiplier++;
+        GetComponentInChildren<MultiplierText>().updateMultiplier(multiplier);
+    }
+    void resetMultiplier()
+    {
+        multiplier = 1;
+        GetComponentInChildren<MultiplierText>().updateMultiplier(multiplier);
+    }
 }

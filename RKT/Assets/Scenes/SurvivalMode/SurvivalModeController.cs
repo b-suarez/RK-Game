@@ -208,7 +208,7 @@ public class SurvivalModeController : MonoBehaviour
         ///////////////////////////////////////////
         //CODE PORTION TO SEND INFO TO THE TUTORIAL
 
-        if (isFirstTimeNormalGame())
+        if (isFirstTimeSurvivalGame())
         {
             timerController.pauseTimer();
             GetComponentInChildren<TutorialScript>().startTutorial();
@@ -235,7 +235,7 @@ public class SurvivalModeController : MonoBehaviour
         ///////////////////////////////////////////
         //CODE PORTION TO SEND INFO TO THE TUTORIAL
 
-        if (isFirstTimeNormalGame())
+        if (isFirstTimeSurvivalGame())
         {
             GetComponentInChildren<TutorialScript>().centerItemClicked();
         }
@@ -265,9 +265,9 @@ public class SurvivalModeController : MonoBehaviour
     }
   
 
-    bool isFirstTimeNormalGame()
+    bool isFirstTimeSurvivalGame()
     {
-        int isFirstTime = PlayerPrefs.GetInt("isFirstTime");
+        int isFirstTime = PlayerPrefs.GetInt("isFirstTimeSurvival");
         if (isFirstTime != 1)
         {
             return true;
