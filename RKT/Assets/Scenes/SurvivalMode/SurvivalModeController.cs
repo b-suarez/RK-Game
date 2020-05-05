@@ -154,7 +154,7 @@ public class SurvivalModeController : MonoBehaviour
         {
             PlayerPrefs.SetFloat("LongestSurvivalGame", timerController.getTotalTime());
         }
-
+        soundTrackController.triggerFadeOut();
         gameOverMenu.triggerGameOverMenuSurvival(timerController.getTotalTime(), PlayerPrefs.GetFloat("LongestSurvivalGame"));
     }
 
@@ -163,6 +163,7 @@ public class SurvivalModeController : MonoBehaviour
         GetComponentInChildren<MenuAnimations>().playRoundCompletedAnim();
         timerController.addTimeToMainTimer(secondsToAddPerRound);
         setInitialPositions(getNewPositions());
+        
 
     }
 
@@ -230,6 +231,7 @@ public class SurvivalModeController : MonoBehaviour
     public void centerItemClicked()
     {
         centerItem.deactivate();
+        soundController.playRoundSound();
         roundCompleted();
 
         ///////////////////////////////////////////

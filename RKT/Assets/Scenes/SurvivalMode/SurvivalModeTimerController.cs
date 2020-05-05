@@ -15,7 +15,8 @@ public class SurvivalModeTimerController : MonoBehaviour
     float roundTime = 10.0f;
     float totalTime;
     float countDownTime = 3.0f;
-    TimerText mainTimer; public float roundTimeLeft; 
+    TimerText mainTimer; 
+    public float roundTimeLeft; 
     float countDownTimerLeft;
     bool roundTimeHasStarted, timerIsOver;
     bool countDownTimerIsOver;

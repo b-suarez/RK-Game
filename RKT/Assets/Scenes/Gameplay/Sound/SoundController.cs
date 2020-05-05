@@ -23,12 +23,54 @@ public class SoundController : MonoBehaviour
         {
             case 0:
                 audioSource.clip = audio1;
+                audioSource.pitch = 0.6f;
                 audioSource.Play();
                 break;
+
+            case 1:
+                audioSource.clip = audio1;
+                audioSource.pitch = 0.8f;
+                audioSource.Play();
+                break;
+            case 2:
+                audioSource.clip = audio1;
+                audioSource.pitch = 1f;
+                audioSource.Play();
+                break;
+            case 3:
+                audioSource.clip = audio1;
+                audioSource.pitch = 1.2f;
+                audioSource.Play();
+                break;
+            case 4:
+                audioSource.clip = audio1;
+                audioSource.pitch = 1.4f;
+                audioSource.Play();
+                break;
+            case 5:
+                audioSource.clip = audio1;
+                audioSource.pitch = 1.6f;
+                audioSource.Play();
+                break;
+
             default:
                 audioSource.clip = audio1;
+                audioSource.pitch = Random.Range(0.6f, 1.4f);
                 audioSource.Play();
                 break;
         }
+    }
+    public void playActionSuccessSound()
+    {
+        audioSource.clip = audio1;
+        audioSource.pitch = Random.Range(0.6f, 1.4f);
+        audioSource.Play();
+    }
+
+    public void playRoundSound()
+    {
+        audioSource.clip = audio1;
+        audioSource.pitch = 2f;
+        audioSource.Play();
     }
 }

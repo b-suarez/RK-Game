@@ -172,6 +172,7 @@ public class GameController : MonoBehaviour {
     {
         deactivateAllItems();
         gameOverMenu.triggerGameOverMenu(score, highscore);
+        soundTrackController.triggerFadeOut();
 
         if (score > getHighScore())
         {
@@ -254,6 +255,7 @@ public class GameController : MonoBehaviour {
 
     public void centerItemClicked()
     {
+        soundController.playRoundSound();
         centerItem.deactivate();
         roundCompleted();
 
