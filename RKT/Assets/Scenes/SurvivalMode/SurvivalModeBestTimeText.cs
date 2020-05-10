@@ -7,7 +7,7 @@ public class SurvivalModeBestTimeText : MonoBehaviour
 {
     Text bestTimeText;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         bestTimeText = GetComponent<Text>();
     }

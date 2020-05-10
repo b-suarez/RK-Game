@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class CountDownTimer : MonoBehaviour {
 
     public bool countdownIsShown;
-    Animator animator;
 
     public void activate()
     {
@@ -17,10 +16,5 @@ public class CountDownTimer : MonoBehaviour {
     public void deactivate()
     {
         countdownIsShown = false;
-    }
-
-    public void updateCountdownTimer(float timeLeft)
-    {
-        GetComponentInChildren<Text>().text = Mathf.Ceil(timeLeft).ToString();
     }
 }

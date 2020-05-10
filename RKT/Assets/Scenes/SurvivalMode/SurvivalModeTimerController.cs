@@ -100,7 +100,6 @@ public class SurvivalModeTimerController : MonoBehaviour
         else if (!controller.gameplayHasStarted)
         {
             countDownTimerLeft -= Time.deltaTime;
-            GetComponentInChildren<CountDownTimer>().updateCountdownTimer(countDownTimerLeft);
         }
     }
 

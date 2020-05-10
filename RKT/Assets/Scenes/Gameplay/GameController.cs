@@ -171,13 +171,19 @@ public class GameController : MonoBehaviour {
     public void GameOver()
     {
         deactivateAllItems();
-        gameOverMenu.triggerGameOverMenu(score, highscore);
+        
         soundTrackController.triggerFadeOut();
 
         if (score > getHighScore())
         {
             setHighScore(score);
+            gameOverMenu.triggerGameOverMenu(score, score);
         }
+        else
+        {
+            gameOverMenu.triggerGameOverMenu(score, highscore);
+        }
+
     }
 
     void roundCompleted()

@@ -153,9 +153,14 @@ public class SurvivalModeController : MonoBehaviour
         if (timerController.getTotalTime() > PlayerPrefs.GetFloat("LongestSurvivalGame"))
         {
             PlayerPrefs.SetFloat("LongestSurvivalGame", timerController.getTotalTime());
+            gameOverMenu.triggerGameOverMenuSurvival(timerController.getTotalTime(), timerController.getTotalTime());
+        }
+        else
+        {
+            gameOverMenu.triggerGameOverMenuSurvival(timerController.getTotalTime(), PlayerPrefs.GetFloat("LongestSurvivalGame"));
         }
         soundTrackController.triggerFadeOut();
-        gameOverMenu.triggerGameOverMenuSurvival(timerController.getTotalTime(), PlayerPrefs.GetFloat("LongestSurvivalGame"));
+       
     }
 
     void roundCompleted()
@@ -163,8 +168,6 @@ public class SurvivalModeController : MonoBehaviour
         GetComponentInChildren<MenuAnimations>().playRoundCompletedAnim();
         timerController.addTimeToMainTimer(secondsToAddPerRound);
         setInitialPositions(getNewPositions());
-        
-
     }
 
     public void roundOver()

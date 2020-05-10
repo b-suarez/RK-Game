@@ -100,7 +100,6 @@ public class TimerController : MonoBehaviour {
         else if(!controller.gameplayHasStarted)
         {
             countDownTimerLeft -= Time.deltaTime;
-            countDownTimerItem.updateCountdownTimer(countDownTimerLeft);
         }
     }
 

@@ -16,6 +16,8 @@ public class TutorialScript : MonoBehaviour {
         {
             PlayerPrefs.SetInt("isFirstTime", 0);
             PlayerPrefs.SetInt("isFirstTimeSurvival", 0);
+            PlayerPrefs.SetFloat("LongestSurvivalGame",0);
+            PlayerPrefs.SetInt("HighScore", 0);
         }
     }
 

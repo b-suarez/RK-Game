@@ -24,4 +24,15 @@ public class MainMenuController : MonoBehaviour {
         menuAnimator.SetTrigger("survival-game-trigger");
         soundTrackController.triggerFadeOut();
     }
+
+    public void triggerLeaderboardAnimation()
+    {
+        menuAnimator.SetTrigger("leaderboard-trigger");
+        soundTrackController.triggerFadeOut();
+    }
+    public void triggerAboutAnimation()
+    {
+        menuAnimator.SetTrigger("about-trigger");
+        soundTrackController.triggerFadeOut();
+    }
 }
