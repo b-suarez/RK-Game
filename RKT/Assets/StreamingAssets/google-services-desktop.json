@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "308674414225-u5486e8q2dhf94c9l7motqi5mqastvpp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.b_concepts.RKT",
+            "certificate_hash": "ed5ceb1a07caa0708c481bfeb0be66bf062cf672"
+          }
+        },
+        {
           "client_id": "308674414225-am9r62c3gm4vg5b2nnnegsbp6co20ote.apps.googleusercontent.com",
           "client_type": 3
         }

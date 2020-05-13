@@ -12,6 +12,7 @@ public class GameController : MonoBehaviour {
     GameOverMenu gameOverMenu;
     SoundController soundController;
     SoundTrackController soundTrackController;
+    NormalScoreSavingController normalScoreSavingController;
 
     ScoreText scoreText;
 
@@ -30,6 +31,8 @@ public class GameController : MonoBehaviour {
 
         timerController = GetComponent<TimerController>();
         soundController = GetComponent<SoundController>();
+
+        normalScoreSavingController = GetComponent<NormalScoreSavingController>();
 
         centerItem = GetComponentInChildren<CenterItem>();
         clickableObjects = GetComponentsInChildren<ClickableItem>();
@@ -173,6 +176,7 @@ public class GameController : MonoBehaviour {
         deactivateAllItems();
         
         soundTrackController.triggerFadeOut();
+       
 
         if (score > getHighScore())
         {
@@ -319,5 +323,10 @@ public class GameController : MonoBehaviour {
     {
         multiplier = 1;
         GetComponentInChildren<MultiplierText>().updateMultiplier(multiplier);
+    }
+
+    public void saveCurrentScore()
+    {
+        normalScoreSavingController.SaveNormalScore(score);
     }
 }

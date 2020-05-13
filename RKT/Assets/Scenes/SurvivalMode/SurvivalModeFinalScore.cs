@@ -14,7 +14,7 @@ public class SurvivalModeFinalScore : MonoBehaviour
 
     public void setTotalTimeText(float totalTime)
     {
-        totalTimeText.text = totalTime.ToString("F0") + "'";
+        totalTimeText.text = totalTime.ToString("F0") + "''";
         
     }
 }

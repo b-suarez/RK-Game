@@ -1,22 +1,44 @@
-﻿using System.Collections;
+﻿using Firebase.Database;
+using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
-
+using SimpleJSON;
 public class LeaderboardController : MonoBehaviour
 {
     SurvivalModeBestTimeText bestTimeTimeTrialText;
     HighScoreText highScoreText;
 
+    public class ScoreBoard
+    {
+        Dictionary<string, ScoreSaveController[]> scores;
+    }
+
+    private FirebaseDatabase _database;
+
     // Animator Booleans:
     // - timeTrialSelected;
 
     Animator leaderboardAnimator;
+    ScoreBoard testScoreboard;
 
     private void Awake()
     {
         bestTimeTimeTrialText = GetComponentInChildren<SurvivalModeBestTimeText>();
         highScoreText = GetComponentInChildren<HighScoreText>();
         leaderboardAnimator = GetComponent<Animator>();
+
+
+        _database = FirebaseDatabase.DefaultInstance;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown("z"))
+        {
+            StartCoroutine(LoadNormalScoreCoroutine());
+        }
     }
 
     // Start is called before the first frame update
@@ -29,8 +51,6 @@ public class LeaderboardController : MonoBehaviour
         {
             highScoreText.setHighScore(PlayerPrefs.GetInt("HighScore"));
         }
-        Debug.Log(PlayerPrefs.GetInt("HighScore").ToString() + " " + PlayerPrefs.GetFloat("LongestSurvivalGame").ToString());
-       
     }
 
     public void triggerTimeTrialLeaderboard()
@@ -40,5 +60,31 @@ public class LeaderboardController : MonoBehaviour
     public void triggerNormalModeLeaderboard()
     {
         leaderboardAnimator.SetBool("timeTrialSelected", false);
+    }
+    public async Task<ScoreBoard> LoadNormalScoreBoard()
+    {
+        var dataSnapshot = await _database.GetReference("scores/normal/").GetValueAsync();
+        if (!dataSnapshot.Exists)
+        {
+            return null;
+        }
+        var test = JSON.Parse(dataSnapshot.GetRawJsonValue());
+        string lool = test[0]["username"].Value;
+        Debug.Log(lool);
+        string tas = test[1]["username"].Value;
+        Debug.Log(tas);
+        //var test = JsonUtility.FromJson<Dictionary<string, ScoreSaveController[]>>(dataSnapshot.GetRawJsonValue());
+        Debug.Log(test);
+
+
+        return JsonUtility.FromJson<ScoreBoard>(dataSnapshot.GetRawJsonValue());
+    }
+
+    private IEnumerator LoadNormalScoreCoroutine()
+    {
+        ScoreSaveController.NormalModeScore[] test;
+        var loadScoresTask = LoadNormalScoreBoard();
+        yield return new WaitUntil(() => loadScoresTask.IsCompleted);
+        testScoreboard = loadScoresTask.Result;
     }
 }

@@ -14,6 +14,6 @@ public class SurvivalModeBestTimeText : MonoBehaviour
 
    public void setBestTimeText(float bestTime)
     {
-        bestTimeText.text = bestTime.ToString("F0")+"'";
+        bestTimeText.text = bestTime.ToString("F0")+"''";
     }
 }

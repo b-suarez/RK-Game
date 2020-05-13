@@ -13,6 +13,7 @@ public class SurvivalModeController : MonoBehaviour
     GameOverMenu gameOverMenu;
     SoundController soundController;
     SoundTrackController soundTrackController;
+    SurvivalScoreSavingController survivalScoreSavingController;
 
     ScoreText scoreText;
 
@@ -38,6 +39,8 @@ public class SurvivalModeController : MonoBehaviour
         gameOverMenu = GetComponentInChildren<GameOverMenu>();
 
         soundTrackController = GetComponentInChildren<SoundTrackController>();
+
+        survivalScoreSavingController = GetComponent<SurvivalScoreSavingController>();
 
         //highscore = PlayerPrefs.GetInt("HighScore");
 
@@ -281,6 +284,11 @@ public class SurvivalModeController : MonoBehaviour
         {
             return false;
         }
+    }
+
+    public void saveCurrentScore()
+    {
+        survivalScoreSavingController.SaveSurvivalScore((int)timerController.getTotalTime());
     }
 
 }
