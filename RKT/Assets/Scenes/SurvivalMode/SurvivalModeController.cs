@@ -20,6 +20,7 @@ public class SurvivalModeController : MonoBehaviour
     int highscore;
 
     public bool gameplayHasStarted = false;
+    public bool gameplayHasFinished = false;
     //int pointsPerCorrect = 100;
     //int pointsPerCenter = 500;
     int secondsToAddPerRound = 2;
@@ -152,6 +153,7 @@ public class SurvivalModeController : MonoBehaviour
 
     public void GameOver()
     {
+        gameplayHasFinished = true;
         deactivateAllItems();
         if (timerController.getTotalTime() > PlayerPrefs.GetFloat("LongestSurvivalGame"))
         {
@@ -289,6 +291,14 @@ public class SurvivalModeController : MonoBehaviour
     public void saveCurrentScore()
     {
         survivalScoreSavingController.SaveSurvivalScore((int)timerController.getTotalTime());
+    }
+    private void OnApplicationQuit()
+    {
+        Debug.Log("OUT");
+        if (gameplayHasFinished)
+        {
+            saveCurrentScore();
+        }
     }
 
 }

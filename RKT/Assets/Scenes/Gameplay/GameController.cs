@@ -19,6 +19,8 @@ public class GameController : MonoBehaviour {
     int highscore;
 
     public bool gameplayHasStarted = false;
+    public bool gameplayHasFinished = false;
+
     int pointsPerCorrect = 100;
     int pointsPerCenter = 500;
 
@@ -173,6 +175,7 @@ public class GameController : MonoBehaviour {
 
     public void GameOver()
     {
+        gameplayHasFinished = true;
         deactivateAllItems();
         
         soundTrackController.triggerFadeOut();
@@ -329,4 +332,12 @@ public class GameController : MonoBehaviour {
     {
         normalScoreSavingController.SaveNormalScore(score);
     }
+    private void OnApplicationQuit()
+    {
+        if (gameplayHasFinished)
+        {
+            saveCurrentScore();
+        }
+    }
+
 }
