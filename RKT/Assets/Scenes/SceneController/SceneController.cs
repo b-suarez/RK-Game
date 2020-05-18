@@ -33,6 +33,8 @@ public class SceneController : MonoBehaviour {
 
     public void loadSceneWith1SecDelay(string scene)
     {
+        
+        
         StartCoroutine(loadSceneWithDelay(scene, 1));
     }
 
@@ -41,6 +43,10 @@ public class SceneController : MonoBehaviour {
     {
         yield return new WaitForSeconds(delaySeconds - 0.4f);
         gameObject.GetComponent<Animator>().SetTrigger("trigger-fade-out");
+        if (GetComponentInChildren<BannerScript>())
+        {
+            GetComponentInChildren<BannerScript>().removeAd();
+        }
         yield return new WaitForSeconds(0.4f);
         loadScene(scene);
     }

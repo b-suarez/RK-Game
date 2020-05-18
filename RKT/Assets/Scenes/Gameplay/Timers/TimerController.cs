@@ -12,7 +12,6 @@ public class TimerController : MonoBehaviour {
     MainTimerText mainTimer;    public float roundTimeLeft; float actionTimeLeft;
     float countDownTimerLeft;
     bool roundTimeHasStarted, timerIsOver;
-    bool countDownTimerIsOver;
     bool isPaused;
 
 
@@ -84,7 +83,6 @@ public class TimerController : MonoBehaviour {
 
     public void startCountDownTimer()
     {
-        countDownTimerIsOver = false;
         countDownTimerLeft = countDownTime;
         countDownTimerItem.activate();
     }

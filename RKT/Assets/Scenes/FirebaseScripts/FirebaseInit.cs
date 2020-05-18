@@ -4,6 +4,7 @@ using Firebase;
 using Firebase.Analytics;
 using UnityEngine;
 
+
 public class FirebaseInit : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -21,6 +22,7 @@ public class FirebaseInit : MonoBehaviour
                 Firebase.FirebaseApp app = Firebase.FirebaseApp.DefaultInstance;
 
                 // Set a flag here for indicating that your project is ready to use Firebase.
+
             }
             else
             {
@@ -29,5 +31,7 @@ public class FirebaseInit : MonoBehaviour
                 // Firebase Unity SDK is not safe to use here.
             }
         });
+
+       
     }
 }

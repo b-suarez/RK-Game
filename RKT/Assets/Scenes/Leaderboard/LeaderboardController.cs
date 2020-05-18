@@ -70,11 +70,10 @@ public class LeaderboardController : MonoBehaviour
         }
         var test = JSON.Parse(dataSnapshot.GetRawJsonValue());
         string lool = test[0]["username"].Value;
-        Debug.Log(lool);
         string tas = test[1]["username"].Value;
-        Debug.Log(tas);
+ 
         //var test = JsonUtility.FromJson<Dictionary<string, ScoreSaveController[]>>(dataSnapshot.GetRawJsonValue());
-        Debug.Log(test);
+
 
 
         return JsonUtility.FromJson<ScoreBoard>(dataSnapshot.GetRawJsonValue());
@@ -82,7 +81,6 @@ public class LeaderboardController : MonoBehaviour
 
     private IEnumerator LoadNormalScoreCoroutine()
     {
-        ScoreSaveController.NormalModeScore[] test;
         var loadScoresTask = LoadNormalScoreBoard();
         yield return new WaitUntil(() => loadScoresTask.IsCompleted);
         testScoreboard = loadScoresTask.Result;

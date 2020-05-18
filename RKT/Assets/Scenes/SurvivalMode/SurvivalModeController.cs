@@ -15,9 +15,7 @@ public class SurvivalModeController : MonoBehaviour
     SoundTrackController soundTrackController;
     SurvivalScoreSavingController survivalScoreSavingController;
 
-    ScoreText scoreText;
 
-    int highscore;
 
     public bool gameplayHasStarted = false;
     public bool gameplayHasFinished = false;
@@ -25,8 +23,6 @@ public class SurvivalModeController : MonoBehaviour
     //int pointsPerCenter = 500;
     int secondsToAddPerRound = 2;
 
-    int score;
-    int multiplier;
 
     // Use this for initialization
     void Start()
@@ -189,28 +185,14 @@ public class SurvivalModeController : MonoBehaviour
 
     }
 
-    void resetScoreAndMultiplier()
-    {
-        score = 0;
-   
-    }
 
-    void addScore(int pointsToAdd)
-    {
-        score = score + pointsToAdd * multiplier;
-        scoreText.setScoreText(score);
-    }
 
-    public int getMultiplier()
-    {
-        return multiplier;
-    }
 
     public void startGameplay()
     {
         gameplayHasStarted = true;
         setInitialPositions(getNewPositions());
-        resetScoreAndMultiplier();
+        
 
 
 
@@ -253,21 +235,6 @@ public class SurvivalModeController : MonoBehaviour
         ///////////////////////////////////////////
     }
 
-    public int getScore()
-    {
-        return score;
-    }
-
-    public void setHighScore(int score)
-    {
-        PlayerPrefs.SetInt("HighScore", score);
-    }
-
-    public int getHighScore()
-    {
-        return highscore;
-    }
-
     void resetGameplay()
     {
         deactivateAllItems();
@@ -294,7 +261,6 @@ public class SurvivalModeController : MonoBehaviour
     }
     private void OnApplicationQuit()
     {
-        Debug.Log("OUT");
         if (gameplayHasFinished)
         {
             saveCurrentScore();
